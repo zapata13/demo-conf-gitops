@@ -2,7 +2,6 @@ kind: Route
 apiVersion: route.openshift.io/v1
 metadata:
   name: demo-az-devops
-  namespace: quarkus-gitops
   labels:
     app: demo-az-devops
     app.kubernetes.io/component: demo-az-devops
