@@ -31,7 +31,7 @@ spec:
               memory: '256Mi'
               cpu: '250m'
           imagePullPolicy: IfNotPresent
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: demo-az-devops
