@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: demo-az-devops
-          bimage: quay-demo-quay-quay-rh.apps.cluster-w58bc.dynamic.redhatworkshops.io/erivasza/demo-az-devops:89
+          image: quay-demo-quay-quay-rh.apps.cluster-w58bc.dynamic.redhatworkshops.io/erivasza/demo-az-devops:89
           ports:
             - containerPort: 8080
               protocol: TCP
