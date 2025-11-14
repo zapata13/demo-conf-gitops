@@ -1,0 +1,22 @@
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: demo-az-devops
+  namespace: quarkus-gitops
+  labels:
+    app: demo-az-devops
+    app.kubernetes.io/component: demo-az-devops
+    app.kubernetes.io/instance: demo-az-devops
+    app.kubernetes.io/name: demo-az-devops
+    app.kubernetes.io/part-of: demo-az-devops-app
+    app.openshift.io/runtime-version: '82'
+spec:
+  to:
+    kind: Service
+    name: demo-az-devops
+    weight: 100
+  port:
+    targetPort: 8080-tcp
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: Redirect

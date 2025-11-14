@@ -1,0 +1,42 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  namespace: quarkus-gitops
+  labels:
+    app: demo-az-devops
+    app.kubernetes.io/component: demo-az-devops
+    app.kubernetes.io/instance: demo-az-devops
+    app.kubernetes.io/name: demo-az-devops
+    app.kubernetes.io/part-of: demo-az-devops-app
+    app.openshift.io/runtime: quarkus
+    app.openshift.io/runtime-namespace: quarkus-gitops
+spec:
+  template:
+    metadata:
+      labels:
+        app: demo-az-devops
+        deployment: demo-az-devops
+    spec:
+      containers:
+        - name: demo-az-devops
+          image: 'quay-demo-quay-quay-rh.apps.cluster-w58bc.dynamic.redhatworkshops.io/erivasza/demo-az-devops:82'
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          resources:
+            limits:
+              memory: '512Mi'
+              cpu: '500m'
+            requests:
+              memory: '256Mi'
+              cpu: '250m'
+          imagePullPolicy: IfNotPresent
+  replicas: 1
+  selector:
+    matchLabels:
+      app: demo-az-devops
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 25%
+      maxSurge: 25%

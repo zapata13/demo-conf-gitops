@@ -1,0 +1,20 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: demo-az-devops
+  namespace: quarkus-gitops
+  labels:
+    app: demo-az-devops
+    app.kubernetes.io/component: demo-az-devops
+    app.kubernetes.io/instance: demo-az-devops
+    app.kubernetes.io/name: demo-az-devops
+    app.kubernetes.io/part-of: demo-az-devops-app
+spec:
+  ports:
+    - name: 8080-tcp
+      protocol: TCP
+      port: 8080
+      targetPort: 8080
+  selector:
+    app: demo-az-devops
+    deployment: demo-az-devops
